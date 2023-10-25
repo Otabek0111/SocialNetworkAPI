@@ -1,5 +1,4 @@
-const { Scema, model } = require('mongoose'); // import Schema and model from mongoose
-const ReactionSchema = require('./Reaction'); // import ReactionSchema from Reaction.js
+const { Schema, model } = require('mongoose'); // import Schema and model from mongoose
 
 // create the user model
 const UserSchema = new Schema({
