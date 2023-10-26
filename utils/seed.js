@@ -4,10 +4,9 @@ const mongoose = require('mongoose');
 
 const users = [
     {   
-        _id: mongoose.Types.ObjectId(),
         username: 'testUser1',
         email: 'test@email.com',
-        tought: []
+        thought: []
     },
         
 ]
