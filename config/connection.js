@@ -1,12 +1,14 @@
-const { connect, connection } = require('mongoose');
+const mongoose = require('mongoose');
 
-const connectionString =
-    process.env.MONGODB_URI || 'mongodb://localhost:27017/userDB';
+// const Mongoose = require('mongoose');
 
-connect(connectionString);
+// const connectionString =
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/userDB')
 
-connection.on('connected', () => {
-    console.log('Mongoose connected successfully.');
-}); 
+// connect(connectionString);
 
-module.exports = connection;
+// connection.on('connected', () => {
+//     console.log('Mongoose connected successfully.');
+// }); 
+
+module.exports = mongoose.connection;
