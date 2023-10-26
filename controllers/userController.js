@@ -84,7 +84,9 @@ module.exports = {
         }
     },
 
-    //add friend
+    //add friend 
+    // /api/users/:userId/friends/:friendId 
+
     async addFriend({ params }, res) {
         try {
             const dbUserData = await User.findOneAndUpdate(

@@ -63,16 +63,19 @@ module.exports = {
         }
     },  
     // delete thought
-    async deleteThought({ params }, res) {
+    // /api/thoughts/:id
+
+    async deleteThought(req, res) {
         try {
-            const dbThoughtData = await Thought.findOneAndDelete({ _id: params.id });
+            const dbThoughtData = await Thought.findOneAndDelete(
+                { _id: req.params.thoughtId });
             if (!dbThoughtData) {
                 res.status(404).json({ message: 'No thought found with this id!' });
                 return;
             }
             const dbUserData = await User.findOneAndUpdate(
                 { username: dbThoughtData.username },
-                { $pull: { thoughts: params.id } },
+                { $pull: { thoughts: req.params.id } },
                 { new: true }
             );
             if (!dbUserData) {
@@ -87,15 +90,16 @@ module.exports = {
         }
     },
     // add reaction to thought
-    async addReaction({ params, body }, res) {
+    async addReaction(req, res) {
         try {
             const dbThoughtData = await Thought.findOneAndUpdate(
-                { _id: params.id },
-                { $push: { reactions: body } },
+                { _id: req.params.thoughtId },
+                { $addToSet: { reactions: req.body } },
+                { $pull: { reactions: { _id: req.params.reactionId } } },
                 { new: true }
             );
             if (!dbThoughtData) {
-                res.status(404).json({ message: 'No thought found with this id!' });
+                res.status(404).json({ message: 'No thought found with this id!!!' });
                 return;
             }
             res.json(dbThoughtData);
@@ -105,11 +109,11 @@ module.exports = {
         }
     },
     // delete reaction from thought
-    async deleteReaction({ params }, res) {
+    async deleteReaction( req, res) {
         try {
             const dbThoughtData = await Thought.findOneAndUpdate(
-                { _id: params.id },
-                { $pull: { reactions: { reactionId: params.reactionId } } },
+                { _id: req.params.thoughtId },
+                { $pull: { reactions: { _id: req.params.reactionId } } },
                 { new: true }
             );
             if (!dbThoughtData) {
