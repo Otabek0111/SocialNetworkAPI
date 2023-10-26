@@ -1,5 +1,5 @@
-const connection = require('config/connection');
-const { User, Thought , Reaction } = require('models');
+const connection = require('../config/connection');
+const { User, Thought } = require('../models');
 const mongoose = require('mongoose');
 
 const users = [
@@ -17,10 +17,9 @@ connection.once('open', async () => {
     try {
         await Thought.deleteMany({});
         await User.deleteMany({});
-        await Reaction.deleteMany({});
 
         await User.create(users);
-        await Thought.create(thoughts);
+        await Thought.create(users[0].thought);
 
         console.info('Seeding complete! 🌱');
         console.log('All done!');
