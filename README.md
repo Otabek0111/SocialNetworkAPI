@@ -51,7 +51,7 @@ To create the Social Network API, follow these steps:
    - Use a tool like Insomnia to test the API's functionality. Ensure that you can create, update, and delete users and thoughts, add and remove friends, and react to thoughts.
 
 6. **Video Walkthrough:**
-    - [Video Walkthrough Link](   )
+    - [Video Walkthrough Link]( https://watch.screencastify.com/v/jsTX8cohJhDu8ihBywj1  )
 
 ## Additional Resources
 
