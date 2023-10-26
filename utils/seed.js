@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const users = [
     {   
-        username: 'testUser1',
+        username: 'test1',
         email: 'test@email.com',
         thought: []
     },
