@@ -1,7 +1,7 @@
 const { Schema, Types } = require('mongoose'); // import Schema and model from mongoose
 
 // create the user model
-const UserSchema = new Schema({
+const ReactionSchema = new Schema({
     
         reactionId: {
             type: Schema.Types.ObjectId,
